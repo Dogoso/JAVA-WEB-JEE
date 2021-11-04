@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class IndexServlet extends HttpServlet{
 
@@ -22,7 +23,14 @@ public class IndexServlet extends HttpServlet{
 			out.print("<p>Navegue pela pagina:</p>");
 			out.print("<a href='http://localhost:8080/JEERLSYSTEM/newemail'>Enviar email</a> <br>");
 			out.print("<a href='http://localhost:8080/JEERLSYSTEM/emails'>Ver emails</a> <br>");
-			out.print("<a href='http://localhost:8080/JEERLSYSTEM/logoff'>Sair</a> <br>");
+			
+			HttpSession session = req.getSession();
+			if(session.getAttribute("user") != null) {
+				out.print("<a href='http://localhost:8080/JEERLSYSTEM/logoff'>Sair</a> <br>");
+			}else {
+				out.print("<a href='http://localhost:8080/JEERLSYSTEM/login'>Logar</a> <br>");
+			}
+			
 			out.print("</body>");
 			out.print("</html>");
 		} catch (IOException e) {

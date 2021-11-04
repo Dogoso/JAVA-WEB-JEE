@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,10 +9,20 @@ import java.sql.Statement;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class EmailsServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
+		
+		if(req.getSession().getAttribute("user") == null) {
+			try {
+				res.sendRedirect("http://localhost:8080/JEERLSYSTEM/login");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		try {
 			PrintWriter out = res.getWriter();
 			out.print("<html>");
@@ -41,6 +52,12 @@ public class EmailsServlet extends HttpServlet {
 			String SQL = "SELECT * FROM letters";
 			
 			ResultSet result = stm.executeQuery(SQL);
+			
+			HttpSession session = req.getSession();
+			if(session.getAttribute("ip") != null) {
+				out.printf("<p style='color: green'>%s</p>", session.getAttribute("ip"));
+			}
+			
 			out.print("<tr bgcolor='blue' style='color: white'>");
 			out.printf("<td><strong>ID</strong></td>");
 			out.printf("<td><strong>TITULO</strong></td>");

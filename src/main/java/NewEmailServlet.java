@@ -14,6 +14,15 @@ public class NewEmailServlet extends HttpServlet{
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
+		
+		if(req.getSession().getAttribute("user") == null) {
+			try {
+				res.sendRedirect("http://localhost:8080/JEERLSYSTEM/login");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		try {
 			PrintWriter out = res.getWriter();
 			out.print("<html>");
