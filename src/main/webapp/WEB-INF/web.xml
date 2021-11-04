@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>JEERLSYSTEM</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+  	<servlet-name>MyServlet</servlet-name>
+  	<servlet-class>IndexServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MyServlet</servlet-name>
+  	<url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>NewEmail</servlet-name>
+  	<servlet-class>NewEmailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>NewEmail</servlet-name>
+  	<url-pattern>/newemail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>Emails</servlet-name>
+  	<servlet-class>EmailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Emails</servlet-name>
+  	<url-pattern>/emails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>EditMail</servlet-name>
+  	<servlet-class>EditMailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EditMail</servlet-name>
+  	<url-pattern>/editmail</url-pattern>
+  </servlet-mapping>
+</web-app>
