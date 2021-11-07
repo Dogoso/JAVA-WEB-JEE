@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -29,9 +30,21 @@ public class LoginServlet extends HttpServlet{
 				out.print("<p style='color: red'>Usuario e/ou senha incorreto!</p>");
 			}
 			
+			String user = "", password = "";
+			Cookie[] cookies = req.getCookies();
+			for(Cookie c : cookies) {
+				if(c.getName().equals("user")) {
+					user = c.getValue();
+				}else if(c.getName().equals("password")) {
+					password = c.getValue();
+				}
+			}
+			
 			out.print("<form method='POST'>");
-			out.print("<strong>Usuario:</strong> <br> <input type='text' name='iptUser'> <br>");
-			out.print("<strong>Senha:</strong> <br> <input type='password' name='iptPassword'>");
+			out.printf("<strong>Usuario:</strong> <br> <input type='text' value='%s' name='iptUser'> <br>",
+					user);
+			out.printf("<strong>Senha:</strong> <br> <input type='password' value='%s' name='iptPassword'>",
+					password);
 			out.print("<br><input type='submit' value='Iniciar Sessao'>");
 			out.print("</form>");
 			out.print("<br>");
@@ -56,6 +69,14 @@ public class LoginServlet extends HttpServlet{
 		PreparedStatement pstm = null;
 		String user = req.getParameter("iptUser");
 		String password = req.getParameter("iptPassword");
+		
+		Cookie cookie = new Cookie("user", user);
+		Cookie cookie2 = new Cookie("password", password);
+		cookie.setMaxAge(60*60*24*30);
+		cookie2.setMaxAge(60*60*24);
+		res.addCookie(cookie);
+		res.addCookie(cookie2);
+		
 		String SQL = "SELECT * FROM users WHERE user = ? and password = ?";
 		try {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/emails", "root", "");

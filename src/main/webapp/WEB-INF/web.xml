@@ -58,6 +58,14 @@
   	<servlet-name>Logoff</servlet-name>
   	<url-pattern>/logoff</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>Cadastro</servlet-name>
+  	<servlet-class>UserCadastro</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Cadastro</servlet-name>
+  	<url-pattern>/cadastro</url-pattern>
+  </servlet-mapping>
   
   <session-config>
   	<session-timeout>60</session-timeout>

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+body {
+	background-color: #505050;
+	color: white;
+}
+
+tr#top {
+	background-color: blue;
+	color: white;
+}
+
+tr.down {
+	
+}
