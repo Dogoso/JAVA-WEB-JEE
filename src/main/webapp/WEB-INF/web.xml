@@ -66,6 +66,14 @@
   	<servlet-name>Cadastro</servlet-name>
   	<url-pattern>/cadastro</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>UsersDatabase</servlet-name>
+  	<servlet-class>UsersDatabase</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UsersDatabase</servlet-name>
+  	<url-pattern>/database</url-pattern>
+  </servlet-mapping>
   
   <session-config>
   	<session-timeout>60</session-timeout>

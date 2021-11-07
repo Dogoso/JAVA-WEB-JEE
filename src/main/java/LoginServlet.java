@@ -48,6 +48,8 @@ public class LoginServlet extends HttpServlet{
 			out.print("<br><input type='submit' value='Iniciar Sessao'>");
 			out.print("</form>");
 			out.print("<br>");
+			out.printf("<p>Não possui uma conta? Cadastre-se agora clicando <a href='%s'>aqui.</a></p>",
+					"http://localhost:8080/JEERLSYSTEM/UserCadastro.jsp");
 			out.print("<a href='http://localhost:8080/JEERLSYSTEM/index'> &lt;- Home</a>");
 			out.print("</body>");
 			out.print("</html>");

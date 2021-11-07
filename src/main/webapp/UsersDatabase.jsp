@@ -17,8 +17,10 @@
 	<table width='100%'>
 		<tr id='top'>
 			<td><strong>ID</strong></td>
-			<td><strong>Usuário</strong></td>
-			<td><strong>Senha</strong></td>
+			<td><strong>USUÁRIO</strong></td>
+			<td><strong>SENHA</strong></td>
+			<td><strong>EDITAR</strong></td>
+			<td><strong>APAGAR</strong></td>
 		</tr>
 	<% 
 		Class.forName("com.mysql.jdbc.Driver");
@@ -33,6 +35,8 @@
 			<td><%=result.getInt("id") %></td>
 			<td><%=result.getString("user") %></td>
 			<td><%=result.getString("password") %></td>
+			<td><a href='#'>[EDITAR]</a></td>
+			<td><a href='http://localhost:8080/JEERLSYSTEM/database?id=<%=result.getInt("id") %>'>[APAGAR]</a></td>
 		</tr>
 	<%
 		}
@@ -40,9 +44,10 @@
 	</table>
 	<br>
 	<a href='http://localhost:8080/JEERLSYSTEM/index'>&lt;- Home</a>
+	<!--  
 	<script>
 		window.alert('Fala Galera!')
 	</script>
-	
+	-->
 </body>
 </html>
