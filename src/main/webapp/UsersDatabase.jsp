@@ -2,8 +2,8 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
-<%@ page language="java" contentType="text/html; charset=UTF8"
-    pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=UTF8"
+    pageEncoding="ISO-8859-1" errorPage="error.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>

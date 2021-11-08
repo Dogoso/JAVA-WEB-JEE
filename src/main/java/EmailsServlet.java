@@ -62,6 +62,7 @@ public class EmailsServlet extends HttpServlet {
 			out.printf("<td><strong>ID</strong></td>");
 			out.printf("<td><strong>TITULO</strong></td>");
 			out.printf("<td><strong>CONTEUDO</strong></td>");
+			out.printf("<td><strong>DATA</strong></td>");
 			out.printf("<td><strong>EDITAR</strong></td>");
 			out.printf("<td><strong>APAGAR</strong></td>");
 			out.print("</tr>");
@@ -70,6 +71,7 @@ public class EmailsServlet extends HttpServlet {
 				out.printf("<td> %d </td>", result.getInt("id"));
 				out.printf("<td> %s </td>", result.getString("title"));
 				out.printf("<td> %s </td>", result.getString("conteudo"));
+				out.printf("<td> %s </td>", result.getDate("data"));
 				out.printf("<td> <a href='http://localhost:8080/JEERLSYSTEM/editmail?id=%s'>[EDITAR]</a> </td>",
 						result.getInt("id"));
 				out.printf("<td> <a href='http://localhost:8080/JEERLSYSTEM/emails?id=%s'>[APAGAR]</a> </td>",

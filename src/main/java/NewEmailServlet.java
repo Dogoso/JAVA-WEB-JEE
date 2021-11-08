@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -55,12 +56,14 @@ public class NewEmailServlet extends HttpServlet{
 				// Carrega a classe Driver para poder ser usada.
 				Class.forName("com.mysql.jdbc.Driver"); 
 				try {
-					String SQL = "INSERT INTO letters(title, conteudo) values (?, ?)";
+					String SQL = "INSERT INTO letters(title, conteudo, data) values (?, ?, ?)";
 					Connection conn = 
 							DriverManager.getConnection("jdbc:mysql://localhost:3306/emails", "root", "");
 					PreparedStatement pstm = conn.prepareStatement(SQL);
 					pstm.setString(1, title);
 					pstm.setString(2, text);
+					java.util.Date data = new java.util.Date();
+					pstm.setDate(3, new Date(data.getTime()));
 					pstm.execute();
 					pstm.close();
 					conn.close();	

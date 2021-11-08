@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,12 +46,17 @@ public class EditMailServlet extends HttpServlet{
 				pstm.setInt(1, id);
 				ResultSet result = pstm.executeQuery();
 				if(result.next()) {
-					String textArea = result.getString("conteudo"), title = result.getString("title");
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+					String textArea = result.getString("conteudo"), 
+							title = result.getString("title"),
+							date = sdf.format(result.getDate("data"));
 					out.print("<h1>EDICAO</h1>");
 					out.print("<hr>");
 					out.print("<form method='POST'>");
 					out.printf("<strong>Id:</strong> <br> <input type='text' readonly='readonly' value='%d' name='iptid'> <br>",
 							id);
+					out.printf("<strong>Data:</strong> <br> <input type='text' readonly='readonly' value='%s' name='iptdate'> <br>",
+							date);
 					out.printf("<strong>Titulo:</strong> <br> <input type='text' value='%s' name='ipttext'> <br>",
 							title);
 					out.printf("<strong>Conteudo:</strong> <br> <textarea name='textcont' rows='10' cols='50'>%s</textarea>",
